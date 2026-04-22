@@ -1,0 +1,71 @@
+# CONFIGURACIÓN [MICROSERVICIO]: 
+server:
+  port: 8080
+  # Puerto donde levanta la aplicación SPRING BOOT.
+
+spring:
+  # Referencias a ARCHIVOS de CONFIGURACIÓN personalizados por ENGINE.
+  config:
+    import:
+    - optional:classpath:application-engine-kv.yml
+    - optional:classpath:application-engine-transit.yml
+    - optional:classpath:application-engine-certificate.yml
+    - optional:classpath:application-engine-database.yml
+
+# CONFIGURACIÓN COMÚN DE VAULT: 
+# Propiedades compartidas por todos los ENGINEs
+vault:
+  core:
+    uri: http://vault-ui-vault.apps.itz-slfzi3.infra01-lb.lon04.techzone.ibm.com
+    # URL ENDPOINT del servidor VAULT (cluster remoto en OPENSHIFT)
+
+    authentication: USERPASS
+    # Método de autenticación: USERPASS, TOKEN, APPROLE, etc. 
+
+    username: ibm-app
+    password: 12345678
+    # Credenciales para autenticación tipo: USERPASS.
+
+    auth-path: userpass
+    # Path del método de autenticación configurado en VAULT (auth/userpass).
+
+# CONFIGURACIÓN [Springdoc OpenAPI]: 
+springdoc:
+  api-docs:
+    path: /api-docs
+    enabled: true
+    # ENDPOINT donde se expone el JSON OpenAPI.
+
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    # SWAGGER UI para validar ENDPOINTs REST.
+
+    operationsSorter: method
+    tagsSorter: alpha
+    # Orden de visualización de ENDPOINTs.
+
+    tryItOutEnabled: true
+    # Permitir ejecutar requests desde SWAGGER UI.
+
+    filter: true
+    # Habilitar búsqueda de ENDPOINTs en SWAGGER.
+
+    displayRequestDuration: true
+    # Mostrar tiempo de RESPONSE en SWAGGER. 
+
+  show-actuator: false
+  # No exponer ENDPOINTs de ACTUATOR en la documentación. 
+
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  # Tipos MIME-TYPE por defecto.
+
+
+# ACTIVACIÓN DEBUG [MICROSERVICIO]:    
+logging:
+  level:
+    org.springframework.vault: DEBUG
+    org.springframework.web.client: DEBUG
+    pe.com.ibm.vault: DEBUG
+

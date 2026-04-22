@@ -1,0 +1,17 @@
+# CONFIGURACIÓN [HASHICORP VAULT] - [ENGINE KV]:
+# ENGINE para manejo de SECRETs ESTATICOS (KEY-VALUE versión 2)
+
+vault:
+  kv:
+    mount: secret
+    # Nombre del mount point del ENGINE KV en VAULT.
+
+    version: KV_2
+    # Versión del ENGINE KV (KV_1 o KV_2).
+
+    base-path: ""
+    # Path base para los SECRETOS dentro del mount.
+    # Ejemplo: "app/config" para acceder a secret/app/config/mi-secreto
+
+    enabled: true
+    # Habilitar o deshabilitar el ENGINE KV. 

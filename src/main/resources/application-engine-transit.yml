@@ -1,0 +1,21 @@
+# CONFIGURACIÓN [HASHICORP VAULT] - [ENGINE TRANSIT]: 
+# ENGINE para manejo de OPERACIONES de CIFRADO/DESCIFRADO (ENCRIPTACIÓN como SERVICIO). 
+
+vault:
+  transit:
+    mount: transit
+    # Nombre del mount point del ENGINE de tipo TRANSIT en VAULT. 
+
+    default-key: my-encryption-key
+    # Nombre de la KEY por defecto para operaciones de CIFRADO.
+    # Esta KEY debe existir en VAULT o ser creada antes de usarla.
+
+    key-type: aes256-gcm96
+    # Tipo de KEY por defecto: (aes256-gcm96, chacha20-poly1305, rsa-2048, etc).
+
+    exportable: false
+    # Permitir exportación de KEYs (false por seguridad). 
+
+    enabled: true
+    # Habilitar o deshabilitar el ENGINE de TRANSIT.  
+

@@ -1,0 +1,21 @@
+# CONFIGURACIÓN [HASHICORP VAULT] - [ENGINE DATABASE]: 
+# ENGINE para manejo de CREDENCIALES DINAMICAS de BASE DE DATOS. 
+
+vault:
+  database:
+    mount: database
+    # Nombre del mount point del ENGINE DATABASE en VAULT. 
+
+    default-role: mariadb-app
+    # Rol por defecto para obtener CREDENCIALES DINAMICAS (solo por ROL se maneja). 
+
+    datasource-url: jdbc:mariadb://mariadb.dummy-database.svc:3306/mariadb
+    # URL del DATASOURCE EXTERNO (NO gestionado por VAULT).
+    # Las CREDENCIALES (username/password) se obtienen dinámicamente de VAULT. 
+
+    driver-class-name: org.mariadb.jdbc.Driver
+    # Driver JDBC a utilizar. 
+
+    enabled: true
+    # Habilitar o deshabilitar el ENGINE DATABASE. 
+

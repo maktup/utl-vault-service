@@ -1,0 +1,30 @@
+# CONFIGURACIÓN [HASHICORP VAULT] - [ENGINE PKI/CERTIFICATE]: 
+# ENGINE para generación & gestión de CERTIFICADOS: X.509.
+
+vault:
+  certificate:
+    mount: pki
+    # Nombre del mount point del ENGINE PKI en VAULT. 
+
+    default-role: ibm-web-server
+    # Rol por defecto para generar CERTIFICADOS. 
+    # Este rol debe estar configurado previamente en VAULT. 
+
+    default-ttl: 720h
+    # TTL por defecto para CERTIFICADOS generados (720h = 30 días). 
+
+    max-ttl: 8760h
+    # TTL máximo permitido para CERTIFICADOS (8760h = 1 año). 
+
+    default-common-name: example.com
+    # Common Name por defecto para CERTIFICADOS. 
+
+    organization: IBM Corporation
+    # Organization por defecto. 
+
+    country: US
+    # Country por defecto (código ISO de 2 letras). 
+
+    enabled: true
+    # Habilitar o deshabilitar el ENGINE CERTIFICADO. 
+
